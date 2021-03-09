@@ -1,0 +1,422 @@
+    /* Let's start off with the usual boilerplate */
+    
+    @import url(https://use.typekit.net/rux0xrm.css);
+    * {
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0;
+        /* I like to set a universal transition while I work too, so I can see animations as I code */
+        transition: 240ms;
+    }
+    /* And now let's do some clever stuff - variables */
+    /* ...you might have seen me demo this once or twice already but as designers it's something we should always be doing whenever we get involved with development */
+    
+     :root {
+        --primary: #0A1E37;
+        --accent: #DB833D;
+        --background: #FFFEEC;
+        --font-body: verdana, sans-serif;
+        --font-display: bely-display, sans-serif;
+        /* You can use any variables you declade in the :root{} selector later on by providing `var(--primary)` etc as your value */
+    }
+    /* Don't repeat yourself so often with your code. Let the computer do the heavy lifting by trickling all your rules down */
+    
+    label {
+        font-family: var(--font-display);
+        font-weight: 400;
+
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    li {
+        font-family: var(--font-display);
+        font-weight: 400;
+    }
+    
+    p {
+        font-family: var(--font-body);
+        /* Fixed pixel sizes are forgivable for some components - but not for fonts. It's very important you set these scalably using something like rem */
+        font-size: 1.12rem;
+        font-weight: 400;
+        line-height: 1.72rem;
+        padding-right : 2rem;
+        padding-bottom : 2rem;
+    }
+
+    p2 {
+        font-family: var(--font-body);
+        /* Fixed pixel sizes are forgivable for some components - but not for fonts. It's very important you set these scalably using something like rem */
+        font-size: 1.12rem;
+        font-weight: 400;
+        line-height: 1.72rem;
+        padding-right : 2rem;
+        padding-bottom : 2rem;
+        color: var(--accent);
+    }
+    /* Now you go through and do the individual styles */
+    
+    h1 {
+        font-size: 6rem;
+        color: var(--accent);
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: var(--accent);
+    }
+    
+    h2 {
+        font-size: 5rem;
+        color: var(--primary);
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: var(--accent);
+    }
+    
+    h3 {
+        font-size: 4rem;
+        color: var(--primary);
+    }
+    
+    h4 {
+        font-size: 3rem;
+        color: var(--background);
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: var(--primary);
+    }
+    
+    h5 {
+        font-size: 2rem;
+        color: var(--primary);
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: var(--accent);
+    }
+    
+    ol,
+    ul {
+        list-style: none;
+    }
+    
+    body {
+        background-color: var(--background);
+        overflow-x: hidden;
+    }
+    /* COMMON UTILITIES */
+    /* COLUMNS */
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+    
+    .cols-4 {
+        grid-column: span 4;
+    }
+    
+    .cols-6 {
+        grid-column: span 6;
+    }
+    
+    .cols-8 {
+        grid-column: span 8;
+    }
+    /* And here's the responsive magic - we just snap everything to span 12 columns */
+    
+    @media only screen and (max-width: 600px) {
+        .grid * {
+            grid-column: span 12;
+        }
+    }
+    /* ...This only gets us so far though, so what I like to do is finish designing everything, then like a 'spot fixes' media query to do some custom stuff as needed. You'll see this towards the end of the style section*/
+    /* What you'll see is that I override this behaviour whenever I feel necessary to match your intended design */
+    /* COMPONENTS */
+    /* NAV */
+    
+    nav {
+        display: flex;
+        height: 96px;
+        background-color: var(--primary);
+        color: white;
+    }
+    /* This is a neat trick to select all immediate children of the nav container and give them permission to grow proprtionally and fill all available space */
+    /* We're also going to recursively set the children as flex parents too, so we can keep aligning things all the way down */
+    
+    nav>* {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+    
+    .brand img {
+        width: auto;
+        height: 40px;
+        margin-left: 2rem;
+    }
+    
+    .links {
+        justify-content: flex-end;
+    }
+    
+    .links * {
+        margin-right: 2rem;
+    }
+    
+    nav li:hover {
+        color: var(--accent);
+        cursor: pointer;
+    }
+    /* HERO */
+    
+    main {
+        height: 100vh;
+        padding-top: 1rem;
+        padding-bottom: 8rem;
+    }
+
+    .title {
+        z-index: 1;
+        /* translateX is the most convenient way to create overlaps */
+        transform: translateX(6rem);
+        /* The alight- and justify-self attrivutes are super handy when working with grids */
+        align-self: end;
+    }
+    
+    .title p {
+        font-size: 1.6rem;
+        color: var(--accent);
+    }
+    
+    .hero-img {
+        border-radius: 2rem;
+        background: url("./images/hero.png") no-repeat;
+        background-size: cover;
+        background-position: 12% 50%;
+    }
+    /* SECTION ABOUT */
+    
+    .about {
+        background-color: var(--primary);
+        color: var(--accent);
+        padding: 2rem;
+    }
+    
+    .about-img {
+        background: url("./images/flower.png") no-repeat left;
+        background-size: contain;
+        margin-right: 1rem;
+        min-height: 800px;
+    }
+    .about-me {
+        align-self: center;
+    }
+    .skills-adobe {
+        padding: 5rem;
+        background: url("./images/icons.png") no-repeat center;
+        width: 100%;
+        background-size: contain;
+        margin-right: 1rem;
+        min-height: 100px;
+
+
+
+    }
+
+    /* works section */
+
+    .casestudy-img {
+        background: url("./images/casestudy.png") no-repeat center;
+        background-size: contain;
+        margin-right: 1rem;
+        min-height: 600px;
+        padding: 4rem;
+    }
+    .uxui {
+        background-color: var(--background);
+        color: var(--accent);
+        padding: 4rem;
+    }
+
+    .overlay {
+        z-index: 1;
+        /* translateX is the most convenient way to create overlaps */
+        transform: translateX(6rem);
+        text-align: center;
+        text-justify: center;
+    }
+
+    /* contact section */
+
+    .contact {
+        background-color: var(--primary);
+        color: var(--accent);
+        padding: 4rem;
+    }
+    
+    .contact-img {
+        background: url("./images/window.png") no-repeat center;
+        background-size: contain;
+        margin-top: 2rem;
+        margin-right: 2rem;
+        min-height: 800px;
+    }
+    .contact-click {
+        margin-top: 2rem;
+        align-self: center;
+        justify-self: center;
+
+    }
+.contact-button {
+    padding: 4rem;
+    font-family: bely-display, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    color: #061E36;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border-color: #E28444;
+    width: 100%;
+    background-color:  #E28444;
+}
+
+    /* RESPONSIVE SPOT FIXES */
+
+    
+    @media only screen and (max-width: 600px) {
+        .title {
+            align-self: start;
+            grid-column: span 4;
+            transform: translateX(2rem) translateY(2rem);
+        }
+        .title p {
+            font-size: .9rem;
+        }
+        .hero-img {
+            grid-column: span 8;
+            margin-top: 16rem;
+        }
+        /* Switch orders of content on collapse to mobile */
+        .about-me {
+            order: 0;
+        }
+        .about-img {
+            order: 1;
+        }
+    }
+
+
+
+    /* Javascript */
+
+    .transition {
+        -webkit-transform: scale(1.1); 
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+        background-color: #061E36;
+        font-family: bely-display, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2rem;
+        color:#DB833D;
+
+    }
+    #enlarge {
+        -webkit-transition: all .4s ease-in-out;
+        -moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -ms-transition: all .4s ease-in-out;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        
+    }
+    
+
+    .transitionimg {
+        -webkit-transform: scale(1.1); 
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    #enlargeimg {
+        -webkit-transition: all .4s ease-in-out;
+        -moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -ms-transition: all .4s ease-in-out;
+    }
+    
+
+
+    /* Modal */
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      
+      /* Modal Content */
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+
+      /* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: #DB833D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type=submit]:hover {
+    background-color: #0A1E37;
+  }
+  
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 5px;
+    background-color: #FFFEEC;
+    padding: 20px;
+  }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Colin Rivers</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+
+    <nav>
+        <div class="brand">
+            <img src="./images/logo4.png"></div>
+        <ul class="links">
+            <li>About</li>
+            <li>Works</li>
+            <li>Skills</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+
+
+    <main class="hero grid">
+
+        <div class="title cols-4">
+            <h1>COLIN RIVERS</h1>
+            <p>Visual communicator.</p>
+            <p>Visual communicator.</p>
+            <p>Visual communicator.</p>
+            <p>Visual communicator.</p>
+            <p>Visual communicator.</p>
+        </div>
+        <div class="cols-8 hero-img"></div>
+
+
+    </main>
+
+    <section class="about grid">
+        <div class="about-img cols-4"></div>
+        <div class="cols-2"></div>
+        <div class="about-me cols-6">
+            <h2>About me</h2>
+            <h2>About me</h2>
+            <p2>South Australian based designer. Speicialising in graphic design, UX/UI and photography. I believe even the most ordinary story can be told in a fantastic manner. South Australian based pixel designer. Speicialising in graphic design, UX/UI
+                and photography. I believe even the most ordinary story can be told in a fantastic manner.
+                in a fantastic manner.</p2>
+                <img class="skills-adobe cols-4"> 
+        </div>
+    </section>
+
+    <section class="uxui grid">
+        <div class="uxui-work cols-4">
+            <h1>Ux/Ui</h1>
+            <h2>Ux/Ui</h2>
+            <p>A selection of case studies produced for both mobile and web, with a focus on user centric design and creative aesthetics.  </p>
+            <button class="enlarge1 contact-click contact-button">Ux/Ui</button></div>
+        </div>
+        <div id="enlargeimg" class="casestudy-img cols-8"></div>
+    </section>
+    
+    <section class="contact grid">
+        <div class="contact-me cols-4">
+            <h2>Contact</h2>
+            <h2>Contact</h2>
+            <p>I would love to help you with your next project! Please send me an email so that we can create great design together :)</p>
+                <button id="myBtn" class="enlarge contact-click contact-button">Let's Be Friends</button></div>
+            </div>
+        <div class="contact-img cols-8"></div>
+
+    </section>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+    
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="container">
+            <form action="action_page.php">
+          
+              <label for="fname">Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          
+              <label for="lname">Email</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your email..">
+          
+              <label for="country">Your Project</label>
+              <select id="country" name="country">
+                <option value="australia">Ux/Ui</option>
+                <option value="canada">Graphic Design</option>
+                <option value="usa">Photography</option>
+              </select>
+          
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+          
+              <input type="submit" value="Submit">
+          
+            </form>
+          </div>
+      </div>
+    
+    </div>
+
+</body>
+
+<nav>
+    <div class="brand">
+        <img src="./images/logo4.png"></div>
+    <ul class="links">
+        <li>About</li>
+        <li>Works</li>
+        <li>Skills</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+
+<script src="./index.js"></script>
+</html>
